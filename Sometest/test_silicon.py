@@ -3,7 +3,7 @@ import httpx
 
 # 1. 配置客户端
 # ⚠️ 请务必替换成你在硅基流动申请的真实 Key
-API_KEY = "sk-wycrwqukgakttyjijpctburmhgzughymabuomhsniqadimno" 
+API_KEY = "sk-xeqiajderansolfwrubhianfbqmjbjyhubfzlcfxfdawmlle" 
 BASE_URL = "https://api.siliconflow.cn/v1"
 
 http_client = httpx.Client(trust_env=False)

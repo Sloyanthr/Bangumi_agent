@@ -1,12 +1,21 @@
 # main.py
 import json
+import httpx  # 确保导入了 httpx
 from openai import OpenAI
 import config
 import utils
-import tools  # 导入所有的工具
+import tools
 
 # 初始化客户端
-client = OpenAI(api_key=config.API_KEY, base_url=config.BASE_URL)
+# ✅ 修复：使用 trust_env=False 来强制忽略系统代理和环境变量
+# 这比 proxies=None 更通用，不会报错
+http_client = httpx.Client(trust_env=False)
+
+client = OpenAI(
+    api_key=config.API_KEY, 
+    base_url=config.BASE_URL,
+    http_client=http_client  # 将这个“无视代理”的客户端传进去
+)
 
 def run_agent():
     print("✨ --- Bangumi Agent (模块化版) --- ✨")
